@@ -1,8 +1,29 @@
+<link rel="stylesheet" href="index.css">
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Let's play!</title>
   </head>
-  <body></body>
+  <body>
+    <h1 class="game_title">Rock Scissors Paper game</h1>
+    <div class="main_container">
+          <div class="player1_container">
+            <div class="icon1_container"><img src="images/question-mark.png" id="player1_main-icon" ></img></div>
+            <div class="choise-icons_container">
+                <img id="stone" src="images/stone-icon.png" class="choise_icon"></img>
+                <img id="scissors" src="images/scissors-icon.png" class="choise_icon"></img>
+                <img id="paper" src="images/paper-icon.png" class="choise_icon"></img>
+            </div>
+        </div>
+        <div class="player2_container">
+            <div class="icon2_container"><img src="images/question-mark.png" id="player2_main-icon"></img></div>
+        </div>
+      
+    </div>
+    <div id="winnerText">
+    </div>
+    <script src="index.js"></script>
+  </body>
 </html>
