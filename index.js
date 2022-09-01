@@ -1,17 +1,48 @@
+
+function showPCgame () {
+    document.getElementById("gamePC_container").style.display = "flex";
+    document.getElementById("buttons_container").style.display = "none";
+}
+
+const PCButtonEl = document.getElementById("PC_button");
+PCButtonEl.addEventListener("click", () => {
+    showPCgame ()
+});
+
+function showPPgame () {
+    document.getElementById("gamePP_container").style.display = "flex";
+    document.getElementById("buttons_container").style.display = "none";
+}
+
+const PPButtonEl = document.getElementById("PP_button");
+PPButtonEl.addEventListener("click", () => {
+    showPPgame ()
+});
+
+function showCCgame () {
+    document.getElementById("gameCC_container").style.display = "flex";
+    document.getElementById("buttons_container").style.display = "none";
+}
+
+const CCButtonEl = document.getElementById("CC_button");
+CCButtonEl.addEventListener("click", () => {
+    showCCgame ()
+});
+
 const gameRules = {
-  stone: {
-    scissors: -1,
-    paper: 1,
-  },
-  scissors: {
-    stone: 1,
-    paper: -1,
-  },
-  paper: {
-    stone: -1,
-    scissors: 1,
-  },
-};
+    stone: {
+      scissors: -1,
+      paper: 1,
+    },
+    scissors: {
+      stone: 1,
+      paper: -1,
+    },
+    paper: {
+      stone: -1,
+      scissors: 1,
+    },
+  };
 
 let computerMathResult = "";
 function computerChoise() {
@@ -63,6 +94,7 @@ function playGame(player1, player2) {
   };
 }
 
+
 const stoneEl = document.getElementById("stone");
 const scissorsEl = document.getElementById("scissors");
 const paperEl = document.getElementById("paper");
@@ -100,3 +132,5 @@ paperEl.addEventListener("click", () => {
   console.log(gameResult);
   resultEl.innerHTML = gameResult.result;
 });
+
+
