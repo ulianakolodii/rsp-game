@@ -1,3 +1,26 @@
+const resultEl = document.getElementById("winnerText");
+const gameCCButtonEl = document.getElementById("gameCC_button");
+function showModeTable () {
+  document.getElementById("gamePC_container").style.display = "none";
+  document.getElementById("gamePP_container").style.display = "none";
+  document.getElementById("gameCC_container").style.display = "none";
+  document.getElementById("buttons_container").style.display = "flex";
+  resultEl.innerText="";
+  const Pl1MainIcon = document.getElementById("player1_main-icon");
+  const mainIcon1 = document.getElementById("comp_main-icon1");
+  const mainIcon2 = document.getElementById("comp_main-icon2");
+  const mainIcon3 = document.getElementById("comp_main-icon3");
+  Pl1MainIcon.setAttribute("src", "images/question-mark.png");
+  mainIcon1.setAttribute("src", "images/question-mark.png");
+  mainIcon2.setAttribute("src", "images/question-mark.png");
+  mainIcon3.setAttribute("src", "images/question-mark.png");
+  gameCCButtonEl.innerText = "Start the game";
+}
+
+const ModeButtonEl = document.querySelectorAll(".mode_button");
+ModeButtonEl.forEach(b => b.addEventListener("click", () => {
+  showModeTable ()
+}));
 
 function showPCgame () {
     document.getElementById("gamePC_container").style.display = "flex";
@@ -48,18 +71,30 @@ let computerMathResult = "";
 function computerChoise() {
   const computerMathCoise = Math.floor(Math.random() * 3);
   if (computerMathCoise === 1) {
-    const mainIcon2 = document.getElementById("player2_main-icon");
+    const mainIcon1 = document.getElementById("comp_main-icon1");
+    const mainIcon2 = document.getElementById("comp_main-icon2");
+    const mainIcon3 = document.getElementById("comp_main-icon3");
+    mainIcon1.setAttribute("src", "images/stone-icon.png");
     mainIcon2.setAttribute("src", "images/stone-icon.png");
+    mainIcon3.setAttribute("src", "images/stone-icon.png");
     computerMathResult = "stone";
     return computerMathResult;
   } else if (computerMathCoise === 2) {
-    const mainIcon2 = document.getElementById("player2_main-icon");
+    const mainIcon1 = document.getElementById("comp_main-icon1");
+    const mainIcon2 = document.getElementById("comp_main-icon2");
+    const mainIcon3 = document.getElementById("comp_main-icon3");
+    mainIcon1.setAttribute("src", "images/scissors-icon.png");
     mainIcon2.setAttribute("src", "images/scissors-icon.png");
+    mainIcon3.setAttribute("src", "images/scissors-icon.png");
     computerMathResult = "scissors";
     return computerMathResult;
   } else {
-    const mainIcon2 = document.getElementById("player2_main-icon");
+    const mainIcon1 = document.getElementById("comp_main-icon1");
+    const mainIcon2 = document.getElementById("comp_main-icon2");
+    const mainIcon3 = document.getElementById("comp_main-icon3");
+    mainIcon1.setAttribute("src", "images/paper-icon.png");
     mainIcon2.setAttribute("src", "images/paper-icon.png");
+    mainIcon3.setAttribute("src", "images/paper-icon.png");
     computerMathResult = "paper";
     return computerMathResult;
   }
@@ -98,7 +133,6 @@ function playGame(player1, player2) {
 const stoneEl = document.getElementById("stone");
 const scissorsEl = document.getElementById("scissors");
 const paperEl = document.getElementById("paper");
-const resultEl = document.getElementById("winnerText");
 
 stoneEl.addEventListener("click", () => {
   const gameResult = playGame(
@@ -133,4 +167,12 @@ paperEl.addEventListener("click", () => {
   resultEl.innerHTML = gameResult.result;
 });
 
-
+gameCCButtonEl.addEventListener("click", () => {
+  const gameResult = playGame(
+    { value: computerChoise(), score: 0 },
+    { value: computerChoise(), score: 0 }
+  );
+  gameCCButtonEl.innerText = "once more";
+  console.log(gameResult);
+  resultEl.innerHTML = gameResult.result;
+});
