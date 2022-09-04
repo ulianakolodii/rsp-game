@@ -1,11 +1,11 @@
 const resultEl = document.getElementById("winnerText");
 const gameCCButtonEl = document.getElementById("gameCC_button");
-function showModeTable () {
+function showModeTable() {
   document.getElementById("gamePC_container").style.display = "none";
   document.getElementById("gamePP_container").style.display = "none";
   document.getElementById("gameCC_container").style.display = "none";
   document.getElementById("buttons_container").style.display = "flex";
-  resultEl.innerText="";
+  resultEl.innerText = "";
   const Pl1MainIcon = document.getElementById("player1_main-icon");
   const mainIcon1 = document.getElementById("comp_main-icon1");
   const mainIcon2 = document.getElementById("comp_main-icon2");
@@ -18,56 +18,69 @@ function showModeTable () {
 }
 
 const ModeButtonEl = document.querySelectorAll(".mode_button");
-ModeButtonEl.forEach(b => b.addEventListener("click", () => {
-  showModeTable ()
-}));
+ModeButtonEl.forEach((b) =>
+  b.addEventListener("click", () => {
+    showModeTable();
+  })
+);
 
-function showPCgame () {
-    document.getElementById("gamePC_container").style.display = "flex";
-    document.getElementById("buttons_container").style.display = "none";
+function showPCgame() {
+  document.getElementById("gamePC_container").style.display = "flex";
+  document.getElementById("buttons_container").style.display = "none";
 }
 
 const PCButtonEl = document.getElementById("PC_button");
 PCButtonEl.addEventListener("click", () => {
-    showPCgame ()
+  showPCgame();
 });
 
-function showPPgame () {
-    document.getElementById("gamePP_container").style.display = "flex";
-    document.getElementById("buttons_container").style.display = "none";
+function showPPgame() {
+  document.getElementById("gamePP_container").style.display = "flex";
+  document.getElementById("buttons_container").style.display = "none";
 }
 
 const PPButtonEl = document.getElementById("PP_button");
 PPButtonEl.addEventListener("click", () => {
-    showPPgame ()
+  showPPgame();
 });
 
-function showCCgame () {
-    document.getElementById("gameCC_container").style.display = "flex";
-    document.getElementById("buttons_container").style.display = "none";
+function showCCgame() {
+  document.getElementById("gameCC_container").style.display = "flex";
+  document.getElementById("buttons_container").style.display = "none";
 }
 
 const CCButtonEl = document.getElementById("CC_button");
 CCButtonEl.addEventListener("click", () => {
-    showCCgame ()
+  showCCgame();
 });
 
 const gameRules = {
-    stone: {
-      scissors: -1,
-      paper: 1,
-    },
-    scissors: {
-      stone: 1,
-      paper: -1,
-    },
-    paper: {
-      stone: -1,
-      scissors: 1,
-    },
-  };
+  stone: {
+    scissors: -1,
+    paper: 1,
+  },
+  scissors: {
+    stone: 1,
+    paper: -1,
+  },
+  paper: {
+    stone: -1,
+    scissors: 1,
+  },
+};
 
 let computerMathResult = "";
+
+const generateRandomChoice = () => {
+  const randomNumber = Math.floor(Math.random() * 3);
+  return ["stone", "scissors", "paper"][randomNumber];
+};
+
+const renderChoice = (id, choice = "stone") => {
+  const img = document.getElementById(id);
+  img.setAttribute("src", `images/${choice}-icon.png`);
+};
+
 function computerChoise() {
   const computerMathCoise = Math.floor(Math.random() * 3);
   if (computerMathCoise === 1) {
@@ -129,7 +142,6 @@ function playGame(player1, player2) {
   };
 }
 
-
 const stoneEl = document.getElementById("stone");
 const scissorsEl = document.getElementById("scissors");
 const paperEl = document.getElementById("paper");
@@ -168,9 +180,15 @@ paperEl.addEventListener("click", () => {
 });
 
 gameCCButtonEl.addEventListener("click", () => {
+  const comp1 = generateRandomChoice();
+  const comp2 = generateRandomChoice();
+
+  renderChoice("comp_main-icon2", comp1);
+  renderChoice("comp_main-icon3", comp2);
+
   const gameResult = playGame(
-    { value: computerChoise(), score: 0 },
-    { value: computerChoise(), score: 0 }
+    { value: comp1, score: 0 },
+    { value: comp2, score: 0 }
   );
   gameCCButtonEl.innerText = "once more";
   console.log(gameResult);
