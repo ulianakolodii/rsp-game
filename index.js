@@ -1,5 +1,7 @@
 const resultEl = document.getElementById("winnerText");
 const gameCCButtonEl = document.getElementById("gameCC_button");
+let player1Result = 0;
+let player2Result = 0;
 function showModeTable() {
   document.getElementById("gamePC_container").style.display = "none";
   document.getElementById("gamePP_container").style.display = "none";
@@ -15,6 +17,8 @@ function showModeTable() {
   mainIcon2.setAttribute("src", "images/question-mark.png");
   mainIcon3.setAttribute("src", "images/question-mark.png");
   gameCCButtonEl.innerText = "Start the game";
+  player1Result = 0;
+  giplayer2Result = 0;
 }
 
 const ModeButtonEl = document.querySelectorAll(".mode_button");
@@ -112,8 +116,7 @@ function computerChoise() {
     return computerMathResult;
   }
 }
-let player1Result = 0;
-let player2Result = 0;
+
 function playGame(player1, player2) {
   if (player1.value == player2.value) {
     return {
