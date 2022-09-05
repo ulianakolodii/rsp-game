@@ -6,6 +6,7 @@ function showModeTable() {
   document.getElementById("gamePC_container").style.display = "none";
   document.getElementById("gamePP_container").style.display = "none";
   document.getElementById("gameCC_container").style.display = "none";
+  document.getElementById("mode_button").style.display = "none";
   document.getElementById("buttons_container").style.display = "flex";
   resultEl.innerText = "";
   resultEl.style.opacity = 0;
@@ -22,15 +23,14 @@ function showModeTable() {
   player2Result = 0;
 }
 
-const ModeButtonEl = document.querySelectorAll(".mode_button");
-ModeButtonEl.forEach((b) =>
-  b.addEventListener("click", () => {
+const ModeButtonEl = document.getElementById("mode_button");
+ModeButtonEl.addEventListener("click", () => {
     showModeTable();
-  })
-);
+  });
 
 function showPCgame() {
   document.getElementById("gamePC_container").style.display = "flex";
+  document.getElementById("mode_button").style.display = "flex";
   document.getElementById("buttons_container").style.display = "none";
   resultEl.style.opacity = 100;
 }
@@ -42,6 +42,7 @@ PCButtonEl.addEventListener("click", () => {
 
 function showPPgame() {
   document.getElementById("gamePP_container").style.display = "flex";
+  document.getElementById("mode_button").style.display = "flex";
   document.getElementById("buttons_container").style.display = "none";
   resultEl.style.opacity = 100;
 }
@@ -53,6 +54,7 @@ PPButtonEl.addEventListener("click", () => {
 
 function showCCgame() {
   document.getElementById("gameCC_container").style.display = "flex";
+  document.getElementById("mode_button").style.display = "flex";
   document.getElementById("buttons_container").style.display = "none";
   resultEl.style.opacity = 100;
 }
